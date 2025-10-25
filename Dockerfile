@@ -36,7 +36,7 @@ RUN pecl install mongodb && docker-php-ext-enable mongodb
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 
-COPY composer.json ./
+COPY composer.json composer.lock ./
 
 
 RUN composer install --no-ansi --no-dev --no-interaction --no-scripts --optimize-autoloader
