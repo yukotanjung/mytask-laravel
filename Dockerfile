@@ -30,13 +30,13 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 
 
-RUN pecl install mongodb && docker-php-ext-enable mongodb
+RUN pecl install mongodb-1.19.2 && docker-php-ext-enable mongodb
 
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 
-COPY composer.json composer.lock ./
+COPY composer.json ./
 
 
 RUN composer install --no-ansi --no-dev --no-interaction --no-scripts --optimize-autoloader
